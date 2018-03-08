@@ -1,6 +1,6 @@
-clear;  
+clear;
 %Note that I add original val to train
-%and then redefine the train/test split. 
+%and then redefine the train/test split.
 %5000 val, 5000 test  https://cs.stanford.edu/people/karpathy/cvpr2015.pdf.
 txt = fileread('./annotations/captions_val2014.json');
 json = jsondecode(txt);  %jsondecode is not available on 2015b. I use Matlab2016b.
@@ -23,8 +23,8 @@ caption_img_id = [json.annotations.image_id];
 
 % change full path
 data = cat(2,...
-    cellfun(@(x) sprintf('/home/zzd/Image-Text-Embedding/dataset/MSCOCO-prepare/image_256/train2014/%sjpg',x(1:end-3)), file_path,'UniformOutput',false),...
-    cellfun(@(x) sprintf('/home/zzd/Image-Text-Embedding/dataset/MSCOCO-prepare/image_256/val2014/%sjpg',x(1:end-3)), file_path_val,'UniformOutput',false));
+    cellfun(@(x) sprintf('/Volumes/ADATA_SD700/Image-Text-Embedding/dataset/MSCOCO-prepare/image_256/train2014/%sjpg',x(1:end-3)), file_path,'UniformOutput',false),...
+    cellfun(@(x) sprintf('/Volumes/ADATA_SD700/Image-Text-Embedding/dataset/MSCOCO-prepare/image_256/val2014/%sjpg',x(1:end-3)), file_path_val,'UniformOutput',false));
 img_label = cat(2,img_id,img_id_val);
 caption = cat(2,caption,caption_val);
 caption_label = cat(2,caption_img_id,caption_img_id_val);
@@ -41,7 +41,7 @@ set(1,test_id) = 3; %test
 %assign image label
 new_label = zeros(1,numel(img_label));
 new_label(set==1) = 1:sum(set==1);
-train_img_label = img_label; 
+train_img_label = img_label;
 train_img_label(set~=1) = 0;
 %assign text label
 for i=1:numel(caption_label)
@@ -76,7 +76,7 @@ caption_label = cat(2,caption_img_id,caption_img_id_val);
 img_label = cat(2,img_id,img_id_val);
 
 test_img_label = img_label(set==3);
-%assign text label 
+%assign text label
 parfor i=1:numel(caption_label)
     now = caption_label(i);
     index = find(test_img_label==now);
@@ -88,6 +88,6 @@ test_id = [];
 test_id.txt_id = caption_label; % test left
 test_label = img_label;
 test_label(set~=3) = 0;
-test_id.img_id = test_label;  
+test_id.img_id = test_label;
 
 save('test_id.mat','test_id');

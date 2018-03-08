@@ -10,3 +10,9 @@ word2vector_matlab/GoogleNews_words.mat
 word2vector_matlab/GoogleNews_vectors.mat
 word2vector_matlab/GoogleNews-vectors-negative300.bin
 
+/dataset/MSCOCO-prepare/._make_dictionary.m
+/dataset/MSCOCO-prepare/._prepare_imdb.m
+/dataset/MSCOCO-prepare/._resize_image.m
+/word2vector_matlab/._GoogleNews-vectors-negative300.bin
+/word2vector_matlab/._read_word2vec.m
+
