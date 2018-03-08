@@ -1,0 +1,12 @@
+/data
+/dataset/MSCOCO-prepare/annotations
+/dataset/MSCOCO-prepare/image
+/dataset/MSCOCO-prepare/image_256
+/dataset/MSCOCO-prepare/url_data.mat
+/dataset/MSCOCO-prepare/caption_train.mat
+/dataset/MSCOCO-prepare/caption.mat
+/dataset/MSCOCO-prepare/test_id.mat
+word2vector_matlab/GoogleNews_words.mat
+word2vector_matlab/GoogleNews_vectors.mat
+word2vector_matlab/GoogleNews-vectors-negative300.bin
+
