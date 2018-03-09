@@ -2,6 +2,9 @@ mkdir image_256
 p = dir('./image/');
 m1 = [];
 for i = 3:numel(p)  %remove . & ..
+    if(p(i).name(1:2)=="._")
+        continue
+    end
     str = [ './image/',p(i).name,'/*.jpg'];
     pp = dir(str);
     if(numel(pp)==0)
@@ -12,11 +15,15 @@ for i = 3:numel(p)  %remove . & ..
         str = [ './image/',p(i).name,'/*.png'];
         pp = dir(str);
     end
+    wdir_str = ['./image_256/',p(i).name];
+    mkdir(wdir_str);
     for j = 1:numel(pp)
-        img_str = [ './image/',p(i).name,'/',pp(j).name];
-        wimg_str = [ './image_256/',p(i).name,'/',pp(j).name(1:end-3),'jpg'];
-        wdir_str = ['./image_256/',p(i).name];
-        mkdir(wdir_str);
+        if(pp(j).name(1:2)=="CO")
+            img_str = [ './image/',p(i).name,'/',pp(j).name(1:end)];
+        else
+            img_str = [ './image/',p(i).name,'/',pp(j).name(3:end)];
+        end
+        wimg_str = [ './image_256/',p(i).name,'/',pp(j).name(3:end-3),'jpg'];
         im = imread(img_str);
         sz = size(im);
         if(numel(sz)==2)
